@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>登录</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/rcglk/css/login.css">
+	<link rel="stylesheet" type="text/css" href="/rcglk/css/style.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="/rcglk/js/jqueryCookie.js"></script>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="logbackground">
+    <div class="container">
+    <div class="row">
+    <div class="col-sm-3">
+      <img src="../images/logimg2.png" style="width: 100%;">
+    </div>
+    <div class="col-sm-2 col-sm-offset-6">
+      <img src="../images/logimg1.png" style="width: 100%;">
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+    <form class="logbox" method="POST" action="/rcglk/login">
+      <table style="border-spacing: 0px 10px;">
+        <tr>
+          <td colspan="2" style="text-align: left;font-size: 30px;"><strong>用户登录：</strong></td>
+        </tr>
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr>
+          <td colspan="2">
+            <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+			  <input type="text" id='username' name="username" class="form-control">
+		    </div>
+		  </td>
+		</tr>	
+		<tr>
+		  <td colspan="2">
+		    <div class="input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+			  <input type="password" id="password" name="password" class="form-control">
+		    </div>
+		  </td>
+		</tr>
+		<tr>
+		  <td width="60%" height="50px"><button onclick="setcookie()" type="submit">登录</button></td>
+		  <td><a href="">忘记密码？</a></td>
+		</tr>  
+      </table>
+    </form>
+    </div>
+    </div>
+    </div>
+</body>
+<script>
+function setcookie(){
+	var user = $('#username').val();
+	$.cookie('user', user);
+	$.ajax({
+		url: '/rcglk/login',
+		method: 'POST',
+		asnyc: false,
+		data: {username: $('#username').val(), password: $('#password').val()}
+	})
+}
+</script>
+</html>

@@ -1,0 +1,33 @@
+.sidebarstyle{
+	border-right: #D5D8DC 1px solid;
+	box-shadow: 0px 0px 10px 0px #545151;
+	background-color: #fff;
+}
+ul.mysidebar
+{
+	text-align: left;
+	padding: 0px;
+}
+li.mysidebar
+{
+	height: 50px;
+	line-height: 50px;
+	border-top: #D5D8DC 1px solid;
+	list-style-type: none;
+}
+li.a
+{
+	height: 0px;
+	overflow-y: hidden;
+	transition: 0.6s;
+}
+li.mysidebar:hover
+{
+	background-color: #ABB2B9;
+	transition: 0.8s;
+}
+a.mysidebar
+{
+	color: #34495E;
+	text-decoration: none;
+}

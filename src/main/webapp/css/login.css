@@ -1,0 +1,31 @@
+.logbackground{
+	background-image: url(../images/logbg.jpg);
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.logbox{
+	background: url(../images/logbox.png);
+	text-align: center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	padding: 50px;
+	display: table;
+	width: 100%;
+}
+.logbtn{
+	width: 80%;
+	border-radius: 10px;
+	color: white;
+	background-color: #2ECC71;
+	height: 40px;
+	font-size: 18px;
+	margin-top: 5px;
+	font-weight: bold;
+}
+.logbtn:hover{
+	background-color: #239B56;
+	margin-top: 0px;
+	transition: 0.7s;
+}
