@@ -157,8 +157,6 @@ public class StudentsprizeController {
 		studentsprizeList=studentsprizeService.getPrize(stuId,status);
 		Msg msg=new Msg();
 		
-		
-		
 		return msg.success().add("studentsprizeList", studentsprizeList);
 	}
 	

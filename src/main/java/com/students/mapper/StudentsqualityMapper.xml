@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.students.mapper.StudentsqualityMapper" >
+  <resultMap id="BaseResultMap" type="com.students.bean.Studentsquality" >
+    <id column="stu_id" property="stuId" jdbcType="VARCHAR" />
+    <result column="q_scientific" property="qScientific" jdbcType="INTEGER" />
+    <result column="q_grade" property="qGrade" jdbcType="INTEGER" />
+    <result column="q_org" property="qOrg" jdbcType="INTEGER" />
+    <result column="quality" property="quality" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    stu_id, q_scientific, q_grade, q_org, quality
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.students.bean.StudentsqualityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from studentsquality
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from studentsquality
+    where stu_id = #{stuId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from studentsquality
+    where stu_id = #{stuId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.students.bean.StudentsqualityExample" >
+    delete from studentsquality
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.students.bean.Studentsquality" >
+    insert into studentsquality (stu_id, q_scientific, q_grade, 
+      q_org, quality)
+    values (#{stuId,jdbcType=VARCHAR}, #{qScientific,jdbcType=INTEGER}, #{qGrade,jdbcType=INTEGER}, 
+      #{qOrg,jdbcType=INTEGER}, #{quality,jdbcType=INTEGER})
+  </insert>
+
+  <insert id="replaceInto" parameterType="java.util.List" >
+    replace into studentsquality (stu_id, q_scientific, q_grade,q_org, quality)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.stuId,jdbcType=VARCHAR},#{item.qScientific,jdbcType=INTEGER},#{item.qGrade,jdbcType=INTEGER},#{item.qOrg,jdbcType=INTEGER},#{item.quality,jdbcType=INTEGER})
+    </foreach>
+
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.students.bean.Studentsquality" >
+    insert into studentsquality
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stuId != null" >
+        stu_id,
+      </if>
+      <if test="qScientific != null" >
+        q_scientific,
+      </if>
+      <if test="qGrade != null" >
+        q_grade,
+      </if>
+      <if test="qOrg != null" >
+        q_org,
+      </if>
+      <if test="quality != null" >
+        quality,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stuId != null" >
+        #{stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="qScientific != null" >
+        #{qScientific,jdbcType=INTEGER},
+      </if>
+      <if test="qGrade != null" >
+        #{qGrade,jdbcType=INTEGER},
+      </if>
+      <if test="qOrg != null" >
+        #{qOrg,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null" >
+        #{quality,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.students.bean.StudentsqualityExample" resultType="java.lang.Integer" >
+    select count(*) from studentsquality
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update studentsquality
+    <set >
+      <if test="record.stuId != null" >
+        stu_id = #{record.stuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qScientific != null" >
+        q_scientific = #{record.qScientific,jdbcType=INTEGER},
+      </if>
+      <if test="record.qGrade != null" >
+        q_grade = #{record.qGrade,jdbcType=INTEGER},
+      </if>
+      <if test="record.qOrg != null" >
+        q_org = #{record.qOrg,jdbcType=INTEGER},
+      </if>
+      <if test="record.quality != null" >
+        quality = #{record.quality,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update studentsquality
+    set stu_id = #{record.stuId,jdbcType=VARCHAR},
+      q_scientific = #{record.qScientific,jdbcType=INTEGER},
+      q_grade = #{record.qGrade,jdbcType=INTEGER},
+      q_org = #{record.qOrg,jdbcType=INTEGER},
+      quality = #{record.quality,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.students.bean.Studentsquality" >
+    update studentsquality
+    <set >
+      <if test="qScientific != null" >
+        q_scientific = #{qScientific,jdbcType=INTEGER},
+      </if>
+      <if test="qGrade != null" >
+        q_grade = #{qGrade,jdbcType=INTEGER},
+      </if>
+      <if test="qOrg != null" >
+        q_org = #{qOrg,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null" >
+        quality = #{quality,jdbcType=INTEGER},
+      </if>
+    </set>
+    where stu_id = #{stuId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.students.bean.Studentsquality" >
+    update studentsquality
+    set q_scientific = #{qScientific,jdbcType=INTEGER},
+      q_grade = #{qGrade,jdbcType=INTEGER},
+      q_org = #{qOrg,jdbcType=INTEGER},
+      quality = #{quality,jdbcType=INTEGER}
+    where stu_id = #{stuId,jdbcType=VARCHAR}
+  </update>
+</mapper>

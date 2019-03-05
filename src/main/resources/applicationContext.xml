@@ -23,9 +23,9 @@
 <!-- 引入jdbc配置文件 -->    
      <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
         <property name="locations">  
-            <list>  
-               <value>classpath:*.properties</value>  
-                <!--要是有多个配置文件，只需在这里继续添加即可 -->  
+            <list>
+               <value>classpath:*.properties</value>
+                <!--要是有多个配置文件，只需在这里继续添加即可 -->
             </list>  
         </property>  
     </bean>  
@@ -33,18 +33,18 @@
 
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName">  
-            <value>${jdbc_driverClassName}</value>  
+        <property name="driverClassName">
+            <value>${jdbc_driverClassName}</value>
         </property>  
-        <property name="url">  
-            <value>${jdbc_url}</value>  
+        <property name="url">
+            <value>${jdbc_url}</value>
         </property>  
-        <property name="username">  
-            <value>${jdbc_username}</value>  
+        <property name="username">
+            <value>${jdbc_username}</value>
         </property>  
-        <property name="password">  
-            <value>${jdbc_password}</value>  
-        </property>  
+        <property name="password">
+            <value>${jdbc_password}</value>
+        </property>
     </bean>
     
     <!-- 自动扫描了所有的XxxxMapper.xml对应的mapper接口文件，这样就不用一个一个手动配置Mpper的映射了，只要Mapper接口类和Mapper映射文件对应起来就可以了。 -->  
@@ -58,7 +58,7 @@
     <!-- 配置Mybatis的文件 ，mapperLocations配置**Mapper.xml文件位置，configLocation配置mybatis-config文件位置-->  
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
         <property name="dataSource" ref="dataSource" />  
-        <property name="mapperLocations" value="classpath*:com/students/mapper/*.xml"/>    
+        <property name="mapperLocations" value="classpath*:com/students/mapper/ResumeMapper.xml"/>
         <property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />  
         <!-- <property name="typeAliasesPackage" value="com.tiantian.ckeditor.model"   
             /> --> 
@@ -81,8 +81,8 @@
              
     </bean> 
     <context:component-scan base-package="com.students.bean"/>
-   <context:component-scan base-package="com.students.service" />  
-    <context:component-scan base-package="com.students.controller" /> 
+    <context:component-scan base-package="com.students.service" />
+    <context:component-scan base-package="com.students.controller" />
     <context:annotation-config/>
     
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

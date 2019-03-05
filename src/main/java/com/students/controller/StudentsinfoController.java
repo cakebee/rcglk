@@ -6,11 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -20,6 +16,7 @@ import com.students.service.StudentsinfoService;
 
 @Component
 @Controller
+@CrossOrigin
 public class StudentsinfoController {
 	
 	@Autowired
@@ -87,7 +84,7 @@ public class StudentsinfoController {
 		Msg msg=new Msg();
 		
 		
-		return msg.success().add("liat", list);
+		return msg.success().add("list", list);
 	}
 	
 	
