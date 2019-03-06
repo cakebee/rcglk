@@ -3,6 +3,7 @@ package com.students.service;
 import com.students.bean.*;
 import com.students.mapper.StudentsqualityMapper;
 import com.students.utils.DecisionTree;
+import com.students.utils.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,12 +39,14 @@ public class StudentQualityService {
     @Autowired
     private StudentsinfoService studentsinfoService;
 
-    private String fileDir = "D:\\JAVA\\file\\dtfile.txt";
+    private String fileDir = Path.DTreeTrainData;
 
     //评价等级对照，用于将数据库中读取的评价等级转换成文字描述
     private String [] cQuality = {"较差", "一般", "良好", "优秀", "无"};
-    //评价默认值，对应 “无”，即缺少数据
-    private int qualityDefualt = 4;
+    //评价默认值
+    private int qualityDefualt = 0;
+    //缺少数据，无评价值
+    private int qualityEmpty = 4;
 
     //科研能力评价标准（分值）
     private int[] cSci = {0, 5, 10};
@@ -138,6 +141,8 @@ public class StudentQualityService {
                 i++;
             }
             map.put(attrGrade, Integer.toString(i));
+            map.put(attrSci, Integer.toString(qualityDefualt));
+            map.put(attrOrg, Integer.toString(qualityDefualt));
             tmpData.put(grade.getStuId(), map);
         }
 
@@ -222,26 +227,26 @@ public class StudentQualityService {
             if((q = entry.getValue().get(attrQua)) != null)
                 studentsquality.setQuality(Integer.parseInt(q));
             else
-                studentsquality.setQuality(qualityDefualt);
+                studentsquality.setQuality(qualityEmpty);
 
             if((q = entry.getValue().get(attrGrade)) != null)
                 studentsquality.setqGrade(Integer.parseInt(q));
             else
-                studentsquality.setqGrade(qualityDefualt);
+                studentsquality.setqGrade(qualityEmpty);
 
             if((q = entry.getValue().get(attrSci)) != null)
                 studentsquality.setqScientific(Integer.parseInt(q));
             else
-                studentsquality.setqScientific(qualityDefualt);
+                studentsquality.setqScientific(qualityEmpty);
 
             if((q = entry.getValue().get(attrOrg)) != null)
                 studentsquality.setqOrg(Integer.parseInt(q));
             else
-                studentsquality.setqOrg(qualityDefualt);
+                studentsquality.setqOrg(qualityEmpty);
 
             studentsqualityList.add(studentsquality);
         }
-        System.out.println(studentsqualityList.size());
+        //System.out.println(studentsqualityList.size());
         studentsqualityMapper.replaceInto(studentsqualityList);
     }
     public boolean createTree(){
