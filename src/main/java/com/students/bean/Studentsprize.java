@@ -27,7 +27,9 @@ public class Studentsprize {
 
     private String reason;
 
-    private Date checkTime;
+    private Date reviewDate;
+
+    private String reviewer;
 
     private String prizeIntro;
 
@@ -127,12 +129,20 @@ public class Studentsprize {
         this.reason = reason == null ? null : reason.trim();
     }
 
-    public Date getCheckTime() {
-        return checkTime;
+    public Date getReviewDate() {
+        return reviewDate;
     }
 
-    public void setCheckTime(Date checkTime) {
-        this.checkTime = checkTime;
+    public void setReviewDate(Date reviewDate) {
+        this.reviewDate = reviewDate;
+    }
+
+    public String getReviewer() {
+        return reviewer;
+    }
+
+    public void setReviewer(String reviewer) {
+        this.reviewer = reviewer == null ? null : reviewer.trim();
     }
 
     public String getPrizeIntro() {

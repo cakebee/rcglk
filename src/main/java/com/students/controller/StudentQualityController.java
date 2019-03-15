@@ -7,10 +7,7 @@ import com.students.service.StudentsinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Null;
 import java.util.ArrayList;
@@ -41,8 +38,13 @@ public class StudentQualityController {
     @ResponseBody
     @RequestMapping(value = "/StudentQuality", method = RequestMethod.GET)
     public Msg getStudentQuality(){
-        List<Studentsquality> studentsQualityList = studentQualityService.getAll();
-        return Msg.success().add("studentQualityList", studentQualityService.transData(studentsQualityList));
+        return Msg.success().add("pageBean", studentQualityService.getAllByPage());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/StudentQuality/detail/{stuId}", method = RequestMethod.GET)
+    public Msg getStudentQualityDetail(@PathVariable("stuId") String stuId){
+        return Msg.success().add("detail", studentQualityService.getStudentDetails(stuId));
     }
 
     //重新构建决策树、收集学生数据并计算学生综合评价
@@ -53,7 +55,6 @@ public class StudentQualityController {
         HashMap<String, HashMap<String, String>> data = studentQualityService.collectData();
         studentQualityService.analyseData(data);
         studentQualityService.saveData(data);
-        List<Studentsquality> studentsQualityList = studentQualityService.getAll();
-        return Msg.success().add("studentQualityList", studentQualityService.transData(studentsQualityList));
+        return Msg.success().add("pageBean", studentQualityService.getAllByPage());
     }
 }

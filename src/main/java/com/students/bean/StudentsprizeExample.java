@@ -942,63 +942,133 @@ public class StudentsprizeExample {
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeIsNull() {
-            addCriterion("CHECK_TIME is null");
+        public Criteria andReviewDateIsNull() {
+            addCriterion("REVIEW_DATE is null");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeIsNotNull() {
-            addCriterion("CHECK_TIME is not null");
+        public Criteria andReviewDateIsNotNull() {
+            addCriterion("REVIEW_DATE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeEqualTo(Date value) {
-            addCriterion("CHECK_TIME =", value, "checkTime");
+        public Criteria andReviewDateEqualTo(Date value) {
+            addCriterion("REVIEW_DATE =", value, "reviewDate");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeNotEqualTo(Date value) {
-            addCriterion("CHECK_TIME <>", value, "checkTime");
+        public Criteria andReviewDateNotEqualTo(Date value) {
+            addCriterion("REVIEW_DATE <>", value, "reviewDate");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeGreaterThan(Date value) {
-            addCriterion("CHECK_TIME >", value, "checkTime");
+        public Criteria andReviewDateGreaterThan(Date value) {
+            addCriterion("REVIEW_DATE >", value, "reviewDate");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("CHECK_TIME >=", value, "checkTime");
+        public Criteria andReviewDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("REVIEW_DATE >=", value, "reviewDate");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeLessThan(Date value) {
-            addCriterion("CHECK_TIME <", value, "checkTime");
+        public Criteria andReviewDateLessThan(Date value) {
+            addCriterion("REVIEW_DATE <", value, "reviewDate");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeLessThanOrEqualTo(Date value) {
-            addCriterion("CHECK_TIME <=", value, "checkTime");
+        public Criteria andReviewDateLessThanOrEqualTo(Date value) {
+            addCriterion("REVIEW_DATE <=", value, "reviewDate");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeIn(List<Date> values) {
-            addCriterion("CHECK_TIME in", values, "checkTime");
+        public Criteria andReviewDateIn(List<Date> values) {
+            addCriterion("REVIEW_DATE in", values, "reviewDate");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeNotIn(List<Date> values) {
-            addCriterion("CHECK_TIME not in", values, "checkTime");
+        public Criteria andReviewDateNotIn(List<Date> values) {
+            addCriterion("REVIEW_DATE not in", values, "reviewDate");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeBetween(Date value1, Date value2) {
-            addCriterion("CHECK_TIME between", value1, value2, "checkTime");
+        public Criteria andReviewDateBetween(Date value1, Date value2) {
+            addCriterion("REVIEW_DATE between", value1, value2, "reviewDate");
             return (Criteria) this;
         }
 
-        public Criteria andCheckTimeNotBetween(Date value1, Date value2) {
-            addCriterion("CHECK_TIME not between", value1, value2, "checkTime");
+        public Criteria andReviewDateNotBetween(Date value1, Date value2) {
+            addCriterion("REVIEW_DATE not between", value1, value2, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerIsNull() {
+            addCriterion("REVIEWER is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerIsNotNull() {
+            addCriterion("REVIEWER is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerEqualTo(String value) {
+            addCriterion("REVIEWER =", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerNotEqualTo(String value) {
+            addCriterion("REVIEWER <>", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerGreaterThan(String value) {
+            addCriterion("REVIEWER >", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerGreaterThanOrEqualTo(String value) {
+            addCriterion("REVIEWER >=", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerLessThan(String value) {
+            addCriterion("REVIEWER <", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerLessThanOrEqualTo(String value) {
+            addCriterion("REVIEWER <=", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerLike(String value) {
+            addCriterion("REVIEWER like", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerNotLike(String value) {
+            addCriterion("REVIEWER not like", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerIn(List<String> values) {
+            addCriterion("REVIEWER in", values, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerNotIn(List<String> values) {
+            addCriterion("REVIEWER not in", values, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerBetween(String value1, String value2) {
+            addCriterion("REVIEWER between", value1, value2, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerNotBetween(String value1, String value2) {
+            addCriterion("REVIEWER not between", value1, value2, "reviewer");
             return (Criteria) this;
         }
     }

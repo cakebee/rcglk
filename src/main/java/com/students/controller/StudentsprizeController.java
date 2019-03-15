@@ -10,6 +10,9 @@ import java.util.UUID;
 
 import javax.ws.rs.DefaultValue;
 
+import com.students.bean.SearchPrize;
+import com.students.utils.Pagination.PageBean;
+import jdk.nashorn.internal.ir.RuntimeNode;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -152,14 +155,20 @@ public class StudentsprizeController {
 	@ResponseBody
 	@RequestMapping(value="/Studentsprize/{stuId}/{status}",method=RequestMethod.GET)
 	public Msg getPrize(@PathVariable("stuId") String stuId,@PathVariable("status") String status){
-		System.out.println(stuId+status);
-		List<Studentsprize> studentsprizeList=new ArrayList<Studentsprize>();
-		studentsprizeList=studentsprizeService.getPrize(stuId,status);
-		Msg msg=new Msg();
-		
-		return msg.success().add("studentsprizeList", studentsprizeList);
+		return Msg.success().add("pageBean", studentsprizeService.getPrizeByPage(stuId, status));
 	}
-	
+
+	@ResponseBody
+	@RequestMapping(value = "/Studentsprize/_search", method = RequestMethod.POST)
+	public Msg searchPrize(@RequestBody SearchPrize searchPrize){
+		PageBean<Studentsprize> pageBean = studentsprizeService.searchPrizeByPage(searchPrize);
+		if(pageBean == null){
+			return Msg.fail();
+		}else {
+			return Msg.success().add("pageBean", pageBean);
+		}
+	}
+
 	@ResponseBody
 	@RequestMapping(value="/Studentsprize/{prizeId}",method=RequestMethod.DELETE)
 	public Msg deletePrize(@PathVariable int prizeId){
@@ -254,10 +263,6 @@ public class StudentsprizeController {
 		   headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 		   headers.setContentDispositionFormData("attachment", fileName);
 		   return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
-		  
-		
-		
-		
 		}
 	
 	/**
@@ -304,10 +309,5 @@ public class StudentsprizeController {
 //		 return msg;
 //		 
 //	 }
-	 
-	
-	 
-	 
-
 
 }

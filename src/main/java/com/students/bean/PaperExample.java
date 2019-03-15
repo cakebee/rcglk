@@ -661,6 +661,266 @@ public class PaperExample {
             addCriterion("stu_id not between", value1, value2, "stuId");
             return (Criteria) this;
         }
+
+        public Criteria andReviewDateIsNull() {
+            addCriterion("review_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateIsNotNull() {
+            addCriterion("review_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateEqualTo(Date value) {
+            addCriterion("review_date =", value, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateNotEqualTo(Date value) {
+            addCriterion("review_date <>", value, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateGreaterThan(Date value) {
+            addCriterion("review_date >", value, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("review_date >=", value, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateLessThan(Date value) {
+            addCriterion("review_date <", value, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateLessThanOrEqualTo(Date value) {
+            addCriterion("review_date <=", value, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateIn(List<Date> values) {
+            addCriterion("review_date in", values, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateNotIn(List<Date> values) {
+            addCriterion("review_date not in", values, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateBetween(Date value1, Date value2) {
+            addCriterion("review_date between", value1, value2, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewDateNotBetween(Date value1, Date value2) {
+            addCriterion("review_date not between", value1, value2, "reviewDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerIsNull() {
+            addCriterion("reviewer is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerIsNotNull() {
+            addCriterion("reviewer is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerEqualTo(String value) {
+            addCriterion("reviewer =", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerNotEqualTo(String value) {
+            addCriterion("reviewer <>", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerGreaterThan(String value) {
+            addCriterion("reviewer >", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerGreaterThanOrEqualTo(String value) {
+            addCriterion("reviewer >=", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerLessThan(String value) {
+            addCriterion("reviewer <", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerLessThanOrEqualTo(String value) {
+            addCriterion("reviewer <=", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerLike(String value) {
+            addCriterion("reviewer like", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerNotLike(String value) {
+            addCriterion("reviewer not like", value, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerIn(List<String> values) {
+            addCriterion("reviewer in", values, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerNotIn(List<String> values) {
+            addCriterion("reviewer not in", values, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerBetween(String value1, String value2) {
+            addCriterion("reviewer between", value1, value2, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andReviewerNotBetween(String value1, String value2) {
+            addCriterion("reviewer not between", value1, value2, "reviewer");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateIsNull() {
+            addCriterion("submit_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateIsNotNull() {
+            addCriterion("submit_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateEqualTo(Date value) {
+            addCriterion("submit_date =", value, "submitDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateNotEqualTo(Date value) {
+            addCriterion("submit_date <>", value, "submitDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateGreaterThan(Date value) {
+            addCriterion("submit_date >", value, "submitDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("submit_date >=", value, "submitDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateLessThan(Date value) {
+            addCriterion("submit_date <", value, "submitDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateLessThanOrEqualTo(Date value) {
+            addCriterion("submit_date <=", value, "submitDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateIn(List<Date> values) {
+            addCriterion("submit_date in", values, "submitDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateNotIn(List<Date> values) {
+            addCriterion("submit_date not in", values, "submitDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateBetween(Date value1, Date value2) {
+            addCriterion("submit_date between", value1, value2, "submitDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubmitDateNotBetween(Date value1, Date value2) {
+            addCriterion("submit_date not between", value1, value2, "submitDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonIsNull() {
+            addCriterion("reason is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonIsNotNull() {
+            addCriterion("reason is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonEqualTo(String value) {
+            addCriterion("reason =", value, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonNotEqualTo(String value) {
+            addCriterion("reason <>", value, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonGreaterThan(String value) {
+            addCriterion("reason >", value, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonGreaterThanOrEqualTo(String value) {
+            addCriterion("reason >=", value, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonLessThan(String value) {
+            addCriterion("reason <", value, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonLessThanOrEqualTo(String value) {
+            addCriterion("reason <=", value, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonLike(String value) {
+            addCriterion("reason like", value, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonNotLike(String value) {
+            addCriterion("reason not like", value, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonIn(List<String> values) {
+            addCriterion("reason in", values, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonNotIn(List<String> values) {
+            addCriterion("reason not in", values, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonBetween(String value1, String value2) {
+            addCriterion("reason between", value1, value2, "reason");
+            return (Criteria) this;
+        }
+
+        public Criteria andReasonNotBetween(String value1, String value2) {
+            addCriterion("reason not between", value1, value2, "reason");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -27,6 +27,11 @@
         <!--<table tableName="studentsprize" domainObjectName="Studentsprize" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>-->
         <!--<table tableName="paper" domainObjectName="Paper"/>
         <table tableName="studentsprize" domainObjectName="Studentsprize"/>-->
-        <table tableName="studentsquality" domainObjectName="Studentsquality"/>
+        <table tableName="studentsinfo" domainObjectName="Studentsinfo">
+            <columnOverride column="stu_home" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="stu_intro" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </table>
+        <!--<table tableName="studentsprize" domainObjectName="Studentsprize"/>-->
+        <!--<table tableName="paper" domainObjectName="Paper"/>-->
     </context>
 </generatorConfiguration>

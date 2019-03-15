@@ -1,7 +1,6 @@
 package com.students.service;
 
 import com.students.bean.GradeExample;
-import com.students.bean.StudentsorgExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,4 +22,11 @@ public class GradeService {
 	public List<Grade> getAll(){
 		return gradeMapper.selectByExample(null);
 	}
+
+    public List<Grade> getGrade(String stuId) {
+		GradeExample example = new GradeExample();
+		GradeExample.Criteria criteria = example.createCriteria();
+		criteria.andStuIdEqualTo(stuId);
+		return gradeMapper.selectByExample(example);
+    }
 }

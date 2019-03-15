@@ -1,8 +1,12 @@
 package com.students.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.students.bean.*;
 import com.students.mapper.StudentsqualityMapper;
 import com.students.utils.DecisionTree;
+import com.students.utils.Pagination.PageBean;
+import com.students.utils.Pagination.PaginationContext;
 import com.students.utils.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -262,6 +266,17 @@ public class StudentQualityService {
         return studentsqualityMapper.selectByExample(null);
     }
 
+    public PageBean<HashMap<String, String>> getAllByPage(){
+        Page<Studentsquality> page = PageHelper.startPage(PaginationContext.getPageNum(), PaginationContext.getPageSize());
+        List<Studentsquality> studentsqualityList = studentsqualityMapper.selectByExample(null);
+        PageBean<HashMap<String, String>> studentsqualityPageBean = new PageBean<HashMap<String, String>>(transData(studentsqualityList));
+        studentsqualityPageBean.setCurrPage(page.getPageNum());
+        studentsqualityPageBean.setPages(page.getPages());
+        studentsqualityPageBean.setTotal(page.getTotal());
+        studentsqualityPageBean.setPageSize(page.getPageSize());
+        return studentsqualityPageBean;
+    }
+
     public List<HashMap<String, String>> transData(List<Studentsquality> studentsqualities){
         List<HashMap<String, String>> resultList = new ArrayList<HashMap<String, String>>();
         for(Studentsquality s : studentsqualities){
@@ -275,6 +290,15 @@ public class StudentQualityService {
             resultList.add(map);
         }
         return resultList;
+    }
+
+    public HashMap<String, Object> getStudentDetails(String stuId){
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("prizeList", studentsprizeService.getPrize(stuId, "-1"));
+        map.put("orgList", studentsorgService.getOrg(stuId));
+        map.put("paperList", paperService.getPaper(stuId));
+        map.put("grade", gradeService.getGrade(stuId).get(0));
+        return map;
     }
 
     private List<ArrayList<String>> getTrainData(){

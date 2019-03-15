@@ -19,6 +19,14 @@ public class Paper {
 
     private String stuId;
 
+    private Date reviewDate;
+
+    private String reviewer;
+
+    private Date submitDate;
+
+    private String reason;
+
     public Integer getId() {
         return id;
     }
@@ -81,5 +89,37 @@ public class Paper {
 
     public void setStuId(String stuId) {
         this.stuId = stuId == null ? null : stuId.trim();
+    }
+
+    public Date getReviewDate() {
+        return reviewDate;
+    }
+
+    public void setReviewDate(Date reviewDate) {
+        this.reviewDate = reviewDate;
+    }
+
+    public String getReviewer() {
+        return reviewer;
+    }
+
+    public void setReviewer(String reviewer) {
+        this.reviewer = reviewer == null ? null : reviewer.trim();
+    }
+
+    public Date getSubmitDate() {
+        return submitDate;
+    }
+
+    public void setSubmitDate(Date submitDate) {
+        this.submitDate = submitDate;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason == null ? null : reason.trim();
     }
 }
