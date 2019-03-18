@@ -79,7 +79,8 @@ public class StudentsinfoService {
             criteria.andStuNameLike("%"+studentsinfo.getStuName()+"%");
         }
         if(studentsinfo.getStuGender() != null && !studentsinfo.getStuGender().equals("")){
-            criteria.andStuGenderEqualTo(studentsinfo.getStuGender());
+            System.out.println(studentsinfo.getStuGender().length());
+            criteria.andStuGenderLike("%" + studentsinfo.getStuGender() + "%");
         }
         if(studentsinfo.getStuMajor() != null && !studentsinfo.getStuMajor().equals("")){
             criteria.andStuMajorLike("%"+studentsinfo.getStuMajor()+"%");
@@ -102,8 +103,6 @@ public class StudentsinfoService {
         if(studentsinfo.getStuGpa() != null && !studentsinfo.getStuGpa().equals("")){
             criteria.andStuGpaLike("%"+studentsinfo.getStuGpa()+"%");
         }
-
-        System.out.println("age:"+studentsinfo.getStuAge()+"-");
 
         page = PageHelper.startPage(PaginationContext.getPageNum(), PaginationContext.getPageSize());
         studentsinfoList = studentsinfoMapper.selectByExample(example);

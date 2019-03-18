@@ -19,6 +19,13 @@ public class PaperService {
         return paperMapper.selectByExample(example);
     }
 
+    public List<Paper> getAll(Integer status){
+        PaperExample example = new PaperExample();
+        PaperExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo(status);
+        return paperMapper.selectByExample(example);
+    }
+
     public List<Paper> getPaper(String stuId) {
         PaperExample example = new PaperExample();
         PaperExample.Criteria criteria = example.createCriteria();

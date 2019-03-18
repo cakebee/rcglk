@@ -87,6 +87,13 @@ public class StudentsorgService {
 
     }
 
+    public List<Studentsorg> getAll(Integer status){
+        StudentsorgExample example = new StudentsorgExample();
+        StudentsorgExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo(status);
+        return studentsorgMapper.selectByExample(example);
+    }
+
     public PageBean<Studentsorg> getAllByPage() {
         return selectByPage(null);
     }

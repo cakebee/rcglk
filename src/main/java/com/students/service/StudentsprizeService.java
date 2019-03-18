@@ -58,6 +58,13 @@ public class StudentsprizeService {
 		return startSelect(example);
 	}
 
+	public List<Studentsprize> getAll(String status){
+		StudentsprizeExample example = new StudentsprizeExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andStatusEqualTo(status);
+		return studentsprizeMapper.selectByExample(example);
+	}
+
 	public PageBean<Studentsprize> searchPrizeByPage(SearchPrize searchPrize){
 		StudentsprizeExample example = new StudentsprizeExample();
 		Criteria criteria = example.createCriteria();

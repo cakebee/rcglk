@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.students.bean.*;
 import com.students.mapper.StudentsqualityMapper;
+import com.students.utils.Data;
 import com.students.utils.DecisionTree;
 import com.students.utils.Pagination.PageBean;
 import com.students.utils.Pagination.PaginationContext;
@@ -294,7 +295,7 @@ public class StudentQualityService {
 
     public HashMap<String, Object> getStudentDetails(String stuId){
         HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("prizeList", studentsprizeService.getPrize(stuId, "-1"));
+        map.put("prizeList", studentsprizeService.getPrize(stuId, Data.reviewPass.toString()));
         map.put("orgList", studentsorgService.getOrg(stuId));
         map.put("paperList", paperService.getPaper(stuId));
         map.put("grade", gradeService.getGrade(stuId).get(0));
