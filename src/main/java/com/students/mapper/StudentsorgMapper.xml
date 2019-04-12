@@ -9,6 +9,7 @@
     <result column="ORG_BEGIN" property="orgBegin" jdbcType="DATE" />
     <result column="ORG_END" property="orgEnd" jdbcType="DATE" />
     <result column="ORG_HONOR" property="orgHonor" jdbcType="VARCHAR" />
+    <result column="ORG_INTRO" property="orgIntro" jdbcType="VARCHAR" />
     <result column="ORG_CLASS" property="orgClass" jdbcType="VARCHAR" />
     <result column="STU_NAME" property="stuName" jdbcType="VARCHAR" />
     <result column="ORG_TYPE" property="orgType" jdbcType="VARCHAR" />
@@ -17,9 +18,7 @@
     <result column="REVIEW_DATE" property="reviewDate" jdbcType="TIMESTAMP" />
     <result column="REASON" property="reason" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="INTEGER" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.students.bean.Studentsorg" extends="BaseResultMap" >
-    <result column="ORG_INTRO" property="orgIntro" jdbcType="LONGVARCHAR" />
+    <result column="FILE" property="file" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -80,28 +79,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ORG_ID, STU_ID, ORG_NAME, ORG_DUTY, ORG_BEGIN, ORG_END, ORG_HONOR, ORG_CLASS, STU_NAME, 
-    ORG_TYPE, SUBMIT_DATE, REVIEWER, REVIEW_DATE, REASON, STATUS
+    ORG_ID, STU_ID, ORG_NAME, ORG_DUTY, ORG_BEGIN, ORG_END, ORG_HONOR, ORG_INTRO, ORG_CLASS, 
+    STU_NAME, ORG_TYPE, SUBMIT_DATE, REVIEWER, REVIEW_DATE, REASON, STATUS, FILE
   </sql>
-  <sql id="Blob_Column_List" >
-    ORG_INTRO
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.students.bean.StudentsorgExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from studentsorg
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.students.bean.StudentsorgExample" >
     select
     <if test="distinct" >
@@ -116,11 +96,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from studentsorg
     where ORG_ID = #{orgId,jdbcType=INTEGER}
   </select>
@@ -137,16 +115,16 @@
   <insert id="insert" parameterType="com.students.bean.Studentsorg" >
     insert into studentsorg (ORG_ID, STU_ID, ORG_NAME, 
       ORG_DUTY, ORG_BEGIN, ORG_END, 
-      ORG_HONOR, ORG_CLASS, STU_NAME, 
-      ORG_TYPE, SUBMIT_DATE, REVIEWER, 
-      REVIEW_DATE, REASON, STATUS, 
-      ORG_INTRO)
+      ORG_HONOR, ORG_INTRO, ORG_CLASS, 
+      STU_NAME, ORG_TYPE, SUBMIT_DATE, 
+      REVIEWER, REVIEW_DATE, REASON, 
+      STATUS, FILE)
     values (#{orgId,jdbcType=INTEGER}, #{stuId,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, 
       #{orgDuty,jdbcType=VARCHAR}, #{orgBegin,jdbcType=DATE}, #{orgEnd,jdbcType=DATE}, 
-      #{orgHonor,jdbcType=VARCHAR}, #{orgClass,jdbcType=VARCHAR}, #{stuName,jdbcType=VARCHAR}, 
-      #{orgType,jdbcType=VARCHAR}, #{submitDate,jdbcType=TIMESTAMP}, #{reviewer,jdbcType=VARCHAR}, 
-      #{reviewDate,jdbcType=TIMESTAMP}, #{reason,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{orgIntro,jdbcType=LONGVARCHAR})
+      #{orgHonor,jdbcType=VARCHAR}, #{orgIntro,jdbcType=VARCHAR}, #{orgClass,jdbcType=VARCHAR}, 
+      #{stuName,jdbcType=VARCHAR}, #{orgType,jdbcType=VARCHAR}, #{submitDate,jdbcType=TIMESTAMP}, 
+      #{reviewer,jdbcType=VARCHAR}, #{reviewDate,jdbcType=TIMESTAMP}, #{reason,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{file,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.students.bean.Studentsorg" >
     insert into studentsorg
@@ -172,6 +150,9 @@
       <if test="orgHonor != null" >
         ORG_HONOR,
       </if>
+      <if test="orgIntro != null" >
+        ORG_INTRO,
+      </if>
       <if test="orgClass != null" >
         ORG_CLASS,
       </if>
@@ -196,8 +177,8 @@
       <if test="status != null" >
         STATUS,
       </if>
-      <if test="orgIntro != null" >
-        ORG_INTRO,
+      <if test="file != null" >
+        FILE,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -221,6 +202,9 @@
       </if>
       <if test="orgHonor != null" >
         #{orgHonor,jdbcType=VARCHAR},
+      </if>
+      <if test="orgIntro != null" >
+        #{orgIntro,jdbcType=VARCHAR},
       </if>
       <if test="orgClass != null" >
         #{orgClass,jdbcType=VARCHAR},
@@ -246,8 +230,8 @@
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="orgIntro != null" >
-        #{orgIntro,jdbcType=LONGVARCHAR},
+      <if test="file != null" >
+        #{file,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -281,6 +265,9 @@
       <if test="record.orgHonor != null" >
         ORG_HONOR = #{record.orgHonor,jdbcType=VARCHAR},
       </if>
+      <if test="record.orgIntro != null" >
+        ORG_INTRO = #{record.orgIntro,jdbcType=VARCHAR},
+      </if>
       <if test="record.orgClass != null" >
         ORG_CLASS = #{record.orgClass,jdbcType=VARCHAR},
       </if>
@@ -305,32 +292,10 @@
       <if test="record.status != null" >
         STATUS = #{record.status,jdbcType=INTEGER},
       </if>
-      <if test="record.orgIntro != null" >
-        ORG_INTRO = #{record.orgIntro,jdbcType=LONGVARCHAR},
+      <if test="record.file != null" >
+        FILE = #{record.file,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update studentsorg
-    set ORG_ID = #{record.orgId,jdbcType=INTEGER},
-      STU_ID = #{record.stuId,jdbcType=VARCHAR},
-      ORG_NAME = #{record.orgName,jdbcType=VARCHAR},
-      ORG_DUTY = #{record.orgDuty,jdbcType=VARCHAR},
-      ORG_BEGIN = #{record.orgBegin,jdbcType=DATE},
-      ORG_END = #{record.orgEnd,jdbcType=DATE},
-      ORG_HONOR = #{record.orgHonor,jdbcType=VARCHAR},
-      ORG_CLASS = #{record.orgClass,jdbcType=VARCHAR},
-      STU_NAME = #{record.stuName,jdbcType=VARCHAR},
-      ORG_TYPE = #{record.orgType,jdbcType=VARCHAR},
-      SUBMIT_DATE = #{record.submitDate,jdbcType=TIMESTAMP},
-      REVIEWER = #{record.reviewer,jdbcType=VARCHAR},
-      REVIEW_DATE = #{record.reviewDate,jdbcType=TIMESTAMP},
-      REASON = #{record.reason,jdbcType=VARCHAR},
-      STATUS = #{record.status,jdbcType=INTEGER},
-      ORG_INTRO = #{record.orgIntro,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -344,6 +309,7 @@
       ORG_BEGIN = #{record.orgBegin,jdbcType=DATE},
       ORG_END = #{record.orgEnd,jdbcType=DATE},
       ORG_HONOR = #{record.orgHonor,jdbcType=VARCHAR},
+      ORG_INTRO = #{record.orgIntro,jdbcType=VARCHAR},
       ORG_CLASS = #{record.orgClass,jdbcType=VARCHAR},
       STU_NAME = #{record.stuName,jdbcType=VARCHAR},
       ORG_TYPE = #{record.orgType,jdbcType=VARCHAR},
@@ -351,7 +317,8 @@
       REVIEWER = #{record.reviewer,jdbcType=VARCHAR},
       REVIEW_DATE = #{record.reviewDate,jdbcType=TIMESTAMP},
       REASON = #{record.reason,jdbcType=VARCHAR},
-      STATUS = #{record.status,jdbcType=INTEGER}
+      STATUS = #{record.status,jdbcType=INTEGER},
+      FILE = #{record.file,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -377,6 +344,9 @@
       <if test="orgHonor != null" >
         ORG_HONOR = #{orgHonor,jdbcType=VARCHAR},
       </if>
+      <if test="orgIntro != null" >
+        ORG_INTRO = #{orgIntro,jdbcType=VARCHAR},
+      </if>
       <if test="orgClass != null" >
         ORG_CLASS = #{orgClass,jdbcType=VARCHAR},
       </if>
@@ -401,29 +371,10 @@
       <if test="status != null" >
         STATUS = #{status,jdbcType=INTEGER},
       </if>
-      <if test="orgIntro != null" >
-        ORG_INTRO = #{orgIntro,jdbcType=LONGVARCHAR},
+      <if test="file != null" >
+        FILE = #{file,jdbcType=VARCHAR},
       </if>
     </set>
-    where ORG_ID = #{orgId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.students.bean.Studentsorg" >
-    update studentsorg
-    set STU_ID = #{stuId,jdbcType=VARCHAR},
-      ORG_NAME = #{orgName,jdbcType=VARCHAR},
-      ORG_DUTY = #{orgDuty,jdbcType=VARCHAR},
-      ORG_BEGIN = #{orgBegin,jdbcType=DATE},
-      ORG_END = #{orgEnd,jdbcType=DATE},
-      ORG_HONOR = #{orgHonor,jdbcType=VARCHAR},
-      ORG_CLASS = #{orgClass,jdbcType=VARCHAR},
-      STU_NAME = #{stuName,jdbcType=VARCHAR},
-      ORG_TYPE = #{orgType,jdbcType=VARCHAR},
-      SUBMIT_DATE = #{submitDate,jdbcType=TIMESTAMP},
-      REVIEWER = #{reviewer,jdbcType=VARCHAR},
-      REVIEW_DATE = #{reviewDate,jdbcType=TIMESTAMP},
-      REASON = #{reason,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=INTEGER},
-      ORG_INTRO = #{orgIntro,jdbcType=LONGVARCHAR}
     where ORG_ID = #{orgId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.students.bean.Studentsorg" >
@@ -434,6 +385,7 @@
       ORG_BEGIN = #{orgBegin,jdbcType=DATE},
       ORG_END = #{orgEnd,jdbcType=DATE},
       ORG_HONOR = #{orgHonor,jdbcType=VARCHAR},
+      ORG_INTRO = #{orgIntro,jdbcType=VARCHAR},
       ORG_CLASS = #{orgClass,jdbcType=VARCHAR},
       STU_NAME = #{stuName,jdbcType=VARCHAR},
       ORG_TYPE = #{orgType,jdbcType=VARCHAR},
@@ -441,7 +393,8 @@
       REVIEWER = #{reviewer,jdbcType=VARCHAR},
       REVIEW_DATE = #{reviewDate,jdbcType=TIMESTAMP},
       REASON = #{reason,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=INTEGER}
+      STATUS = #{status,jdbcType=INTEGER},
+      FILE = #{file,jdbcType=VARCHAR}
     where ORG_ID = #{orgId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -16,21 +16,15 @@ public interface StudentsorgMapper {
 
     int insertSelective(Studentsorg record);
 
-    List<Studentsorg> selectByExampleWithBLOBs(StudentsorgExample example);
-
     List<Studentsorg> selectByExample(StudentsorgExample example);
 
     Studentsorg selectByPrimaryKey(Integer orgId);
 
     int updateByExampleSelective(@Param("record") Studentsorg record, @Param("example") StudentsorgExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") Studentsorg record, @Param("example") StudentsorgExample example);
-
     int updateByExample(@Param("record") Studentsorg record, @Param("example") StudentsorgExample example);
 
     int updateByPrimaryKeySelective(Studentsorg record);
-
-    int updateByPrimaryKeyWithBLOBs(Studentsorg record);
 
     int updateByPrimaryKey(Studentsorg record);
 }

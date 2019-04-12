@@ -11,14 +11,12 @@
     <result column="PRIZE_LEVEL" property="prizeLevel" jdbcType="VARCHAR" />
     <result column="PRIZE_LEVEL2" property="prizeLevel2" jdbcType="VARCHAR" />
     <result column="PRIZE_FILE" property="prizeFile" jdbcType="VARCHAR" />
+    <result column="PRIZE_INTRO" property="prizeIntro" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="VARCHAR" />
     <result column="SUBMIT_DATE" property="submitDate" jdbcType="TIMESTAMP" />
     <result column="reason" property="reason" jdbcType="VARCHAR" />
     <result column="REVIEW_DATE" property="reviewDate" jdbcType="TIMESTAMP" />
     <result column="REVIEWER" property="reviewer" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.students.bean.Studentsprize" extends="BaseResultMap" >
-    <result column="PRIZE_INTRO" property="prizeIntro" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -80,27 +78,8 @@
   </sql>
   <sql id="Base_Column_List" >
     PRIZE_ID, STU_ID, STU_NAME, PRIZE_NAME, PRIZE_DATE, PRIZE_CLASS, PRIZE_LEVEL, PRIZE_LEVEL2, 
-    PRIZE_FILE, STATUS, SUBMIT_DATE, reason, REVIEW_DATE, REVIEWER
+    PRIZE_FILE, PRIZE_INTRO, STATUS, SUBMIT_DATE, reason, REVIEW_DATE, REVIEWER
   </sql>
-  <sql id="Blob_Column_List" >
-    PRIZE_INTRO
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.students.bean.StudentsprizeExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from studentsprize
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.students.bean.StudentsprizeExample" >
     select
     <if test="distinct" >
@@ -115,11 +94,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from studentsprize
     where PRIZE_ID = #{prizeId,jdbcType=INTEGER}
   </select>
@@ -137,14 +114,14 @@
     insert into studentsprize (PRIZE_ID, STU_ID, STU_NAME, 
       PRIZE_NAME, PRIZE_DATE, PRIZE_CLASS, 
       PRIZE_LEVEL, PRIZE_LEVEL2, PRIZE_FILE, 
-      STATUS, SUBMIT_DATE, reason, 
-      REVIEW_DATE, REVIEWER, PRIZE_INTRO
+      PRIZE_INTRO, STATUS, SUBMIT_DATE, 
+      reason, REVIEW_DATE, REVIEWER
       )
     values (#{prizeId,jdbcType=INTEGER}, #{stuId,jdbcType=VARCHAR}, #{stuName,jdbcType=VARCHAR}, 
       #{prizeName,jdbcType=VARCHAR}, #{prizeDate,jdbcType=DATE}, #{prizeClass,jdbcType=VARCHAR}, 
       #{prizeLevel,jdbcType=VARCHAR}, #{prizeLevel2,jdbcType=VARCHAR}, #{prizeFile,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{submitDate,jdbcType=TIMESTAMP}, #{reason,jdbcType=VARCHAR}, 
-      #{reviewDate,jdbcType=TIMESTAMP}, #{reviewer,jdbcType=VARCHAR}, #{prizeIntro,jdbcType=LONGVARCHAR}
+      #{prizeIntro,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{submitDate,jdbcType=TIMESTAMP}, 
+      #{reason,jdbcType=VARCHAR}, #{reviewDate,jdbcType=TIMESTAMP}, #{reviewer,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.students.bean.Studentsprize" >
@@ -177,6 +154,9 @@
       <if test="prizeFile != null" >
         PRIZE_FILE,
       </if>
+      <if test="prizeIntro != null" >
+        PRIZE_INTRO,
+      </if>
       <if test="status != null" >
         STATUS,
       </if>
@@ -191,9 +171,6 @@
       </if>
       <if test="reviewer != null" >
         REVIEWER,
-      </if>
-      <if test="prizeIntro != null" >
-        PRIZE_INTRO,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -224,6 +201,9 @@
       <if test="prizeFile != null" >
         #{prizeFile,jdbcType=VARCHAR},
       </if>
+      <if test="prizeIntro != null" >
+        #{prizeIntro,jdbcType=VARCHAR},
+      </if>
       <if test="status != null" >
         #{status,jdbcType=VARCHAR},
       </if>
@@ -238,9 +218,6 @@
       </if>
       <if test="reviewer != null" >
         #{reviewer,jdbcType=VARCHAR},
-      </if>
-      <if test="prizeIntro != null" >
-        #{prizeIntro,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -280,6 +257,9 @@
       <if test="record.prizeFile != null" >
         PRIZE_FILE = #{record.prizeFile,jdbcType=VARCHAR},
       </if>
+      <if test="record.prizeIntro != null" >
+        PRIZE_INTRO = #{record.prizeIntro,jdbcType=VARCHAR},
+      </if>
       <if test="record.status != null" >
         STATUS = #{record.status,jdbcType=VARCHAR},
       </if>
@@ -295,31 +275,7 @@
       <if test="record.reviewer != null" >
         REVIEWER = #{record.reviewer,jdbcType=VARCHAR},
       </if>
-      <if test="record.prizeIntro != null" >
-        PRIZE_INTRO = #{record.prizeIntro,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update studentsprize
-    set PRIZE_ID = #{record.prizeId,jdbcType=INTEGER},
-      STU_ID = #{record.stuId,jdbcType=VARCHAR},
-      STU_NAME = #{record.stuName,jdbcType=VARCHAR},
-      PRIZE_NAME = #{record.prizeName,jdbcType=VARCHAR},
-      PRIZE_DATE = #{record.prizeDate,jdbcType=DATE},
-      PRIZE_CLASS = #{record.prizeClass,jdbcType=VARCHAR},
-      PRIZE_LEVEL = #{record.prizeLevel,jdbcType=VARCHAR},
-      PRIZE_LEVEL2 = #{record.prizeLevel2,jdbcType=VARCHAR},
-      PRIZE_FILE = #{record.prizeFile,jdbcType=VARCHAR},
-      STATUS = #{record.status,jdbcType=VARCHAR},
-      SUBMIT_DATE = #{record.submitDate,jdbcType=TIMESTAMP},
-      reason = #{record.reason,jdbcType=VARCHAR},
-      REVIEW_DATE = #{record.reviewDate,jdbcType=TIMESTAMP},
-      REVIEWER = #{record.reviewer,jdbcType=VARCHAR},
-      PRIZE_INTRO = #{record.prizeIntro,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -335,6 +291,7 @@
       PRIZE_LEVEL = #{record.prizeLevel,jdbcType=VARCHAR},
       PRIZE_LEVEL2 = #{record.prizeLevel2,jdbcType=VARCHAR},
       PRIZE_FILE = #{record.prizeFile,jdbcType=VARCHAR},
+      PRIZE_INTRO = #{record.prizeIntro,jdbcType=VARCHAR},
       STATUS = #{record.status,jdbcType=VARCHAR},
       SUBMIT_DATE = #{record.submitDate,jdbcType=TIMESTAMP},
       reason = #{record.reason,jdbcType=VARCHAR},
@@ -371,6 +328,9 @@
       <if test="prizeFile != null" >
         PRIZE_FILE = #{prizeFile,jdbcType=VARCHAR},
       </if>
+      <if test="prizeIntro != null" >
+        PRIZE_INTRO = #{prizeIntro,jdbcType=VARCHAR},
+      </if>
       <if test="status != null" >
         STATUS = #{status,jdbcType=VARCHAR},
       </if>
@@ -386,28 +346,7 @@
       <if test="reviewer != null" >
         REVIEWER = #{reviewer,jdbcType=VARCHAR},
       </if>
-      <if test="prizeIntro != null" >
-        PRIZE_INTRO = #{prizeIntro,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where PRIZE_ID = #{prizeId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.students.bean.Studentsprize" >
-    update studentsprize
-    set STU_ID = #{stuId,jdbcType=VARCHAR},
-      STU_NAME = #{stuName,jdbcType=VARCHAR},
-      PRIZE_NAME = #{prizeName,jdbcType=VARCHAR},
-      PRIZE_DATE = #{prizeDate,jdbcType=DATE},
-      PRIZE_CLASS = #{prizeClass,jdbcType=VARCHAR},
-      PRIZE_LEVEL = #{prizeLevel,jdbcType=VARCHAR},
-      PRIZE_LEVEL2 = #{prizeLevel2,jdbcType=VARCHAR},
-      PRIZE_FILE = #{prizeFile,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=VARCHAR},
-      SUBMIT_DATE = #{submitDate,jdbcType=TIMESTAMP},
-      reason = #{reason,jdbcType=VARCHAR},
-      REVIEW_DATE = #{reviewDate,jdbcType=TIMESTAMP},
-      REVIEWER = #{reviewer,jdbcType=VARCHAR},
-      PRIZE_INTRO = #{prizeIntro,jdbcType=LONGVARCHAR}
     where PRIZE_ID = #{prizeId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.students.bean.Studentsprize" >
@@ -420,6 +359,7 @@
       PRIZE_LEVEL = #{prizeLevel,jdbcType=VARCHAR},
       PRIZE_LEVEL2 = #{prizeLevel2,jdbcType=VARCHAR},
       PRIZE_FILE = #{prizeFile,jdbcType=VARCHAR},
+      PRIZE_INTRO = #{prizeIntro,jdbcType=VARCHAR},
       STATUS = #{status,jdbcType=VARCHAR},
       SUBMIT_DATE = #{submitDate,jdbcType=TIMESTAMP},
       reason = #{reason,jdbcType=VARCHAR},

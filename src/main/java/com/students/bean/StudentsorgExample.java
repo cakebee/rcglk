@@ -592,6 +592,76 @@ public class StudentsorgExample {
             return (Criteria) this;
         }
 
+        public Criteria andOrgIntroIsNull() {
+            addCriterion("ORG_INTRO is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroIsNotNull() {
+            addCriterion("ORG_INTRO is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroEqualTo(String value) {
+            addCriterion("ORG_INTRO =", value, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroNotEqualTo(String value) {
+            addCriterion("ORG_INTRO <>", value, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroGreaterThan(String value) {
+            addCriterion("ORG_INTRO >", value, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroGreaterThanOrEqualTo(String value) {
+            addCriterion("ORG_INTRO >=", value, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroLessThan(String value) {
+            addCriterion("ORG_INTRO <", value, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroLessThanOrEqualTo(String value) {
+            addCriterion("ORG_INTRO <=", value, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroLike(String value) {
+            addCriterion("ORG_INTRO like", value, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroNotLike(String value) {
+            addCriterion("ORG_INTRO not like", value, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroIn(List<String> values) {
+            addCriterion("ORG_INTRO in", values, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroNotIn(List<String> values) {
+            addCriterion("ORG_INTRO not in", values, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroBetween(String value1, String value2) {
+            addCriterion("ORG_INTRO between", value1, value2, "orgIntro");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIntroNotBetween(String value1, String value2) {
+            addCriterion("ORG_INTRO not between", value1, value2, "orgIntro");
+            return (Criteria) this;
+        }
+
         public Criteria andOrgClassIsNull() {
             addCriterion("ORG_CLASS is null");
             return (Criteria) this;
@@ -1119,6 +1189,76 @@ public class StudentsorgExample {
 
         public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("STATUS not between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileIsNull() {
+            addCriterion("FILE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileIsNotNull() {
+            addCriterion("FILE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileEqualTo(String value) {
+            addCriterion("FILE =", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNotEqualTo(String value) {
+            addCriterion("FILE <>", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileGreaterThan(String value) {
+            addCriterion("FILE >", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileGreaterThanOrEqualTo(String value) {
+            addCriterion("FILE >=", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLessThan(String value) {
+            addCriterion("FILE <", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLessThanOrEqualTo(String value) {
+            addCriterion("FILE <=", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileLike(String value) {
+            addCriterion("FILE like", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNotLike(String value) {
+            addCriterion("FILE not like", value, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileIn(List<String> values) {
+            addCriterion("FILE in", values, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNotIn(List<String> values) {
+            addCriterion("FILE not in", values, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileBetween(String value1, String value2) {
+            addCriterion("FILE between", value1, value2, "file");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileNotBetween(String value1, String value2) {
+            addCriterion("FILE not between", value1, value2, "file");
             return (Criteria) this;
         }
     }

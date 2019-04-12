@@ -17,6 +17,8 @@ public class Studentsorg {
 
     private String orgHonor;
 
+    private String orgIntro;
+
     private String orgClass;
 
     private String stuName;
@@ -33,7 +35,7 @@ public class Studentsorg {
 
     private Integer status;
 
-    private String orgIntro;
+    private String file;
 
     public Integer getOrgId() {
         return orgId;
@@ -89,6 +91,14 @@ public class Studentsorg {
 
     public void setOrgHonor(String orgHonor) {
         this.orgHonor = orgHonor == null ? null : orgHonor.trim();
+    }
+
+    public String getOrgIntro() {
+        return orgIntro;
+    }
+
+    public void setOrgIntro(String orgIntro) {
+        this.orgIntro = orgIntro == null ? null : orgIntro.trim();
     }
 
     public String getOrgClass() {
@@ -155,11 +165,11 @@ public class Studentsorg {
         this.status = status;
     }
 
-    public String getOrgIntro() {
-        return orgIntro;
+    public String getFile() {
+        return file;
     }
 
-    public void setOrgIntro(String orgIntro) {
-        this.orgIntro = orgIntro == null ? null : orgIntro.trim();
+    public void setFile(String file) {
+        this.file = file == null ? null : file.trim();
     }
 }

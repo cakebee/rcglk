@@ -120,9 +120,9 @@ public class StudentQualityService {
     private HashMap<String, Integer> cPaper = new HashMap<String, Integer>(){
         {
             put("SCI", 10);
-            put("EI/CSSI/SSCI", 5);
-            put("main", 5);
-            put("publish", 2);
+            put("EI/CSSI/SSCI/一级刊物", 5);
+            put("核心期刊", 5);
+            put("公开发表", 2);
         }
     };
 

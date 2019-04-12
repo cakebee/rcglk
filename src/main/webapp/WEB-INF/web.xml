@@ -23,6 +23,7 @@
         <url-pattern>/js/*</url-pattern>
         <url-pattern>/css/*</url-pattern>
         <url-pattern>/images/*</url-pattern>
+        <url-pattern>/uploadFile/*</url-pattern>
     </servlet-mapping>
     <!--2、springmvc的前端控制器，拦截所有请求  -->
     <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
@@ -88,7 +89,17 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/unused</url-pattern>
     </filter-mapping>
-    
+
+    <!--实现put上传文件-->
+    <filter>
+        <filter-name>MultipartFilter</filter-name>
+        <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MultipartFilter</filter-name>
+        <servlet-name>dispatcherServlet</servlet-name>
+    </filter-mapping>
+
     <!-- 4、使用Rest风格的URI，将页面普通的post请求转为指定的delete或者put请求 -->
     <filter>
         <filter-name>HiddenHttpMethodFilter</filter-name>

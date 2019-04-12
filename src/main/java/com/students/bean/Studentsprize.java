@@ -21,6 +21,8 @@ public class Studentsprize {
 
     private String prizeFile;
 
+    private String prizeIntro;
+
     private String status;
 
     private Date submitDate;
@@ -30,8 +32,6 @@ public class Studentsprize {
     private Date reviewDate;
 
     private String reviewer;
-
-    private String prizeIntro;
 
     public Integer getPrizeId() {
         return prizeId;
@@ -105,6 +105,14 @@ public class Studentsprize {
         this.prizeFile = prizeFile == null ? null : prizeFile.trim();
     }
 
+    public String getPrizeIntro() {
+        return prizeIntro;
+    }
+
+    public void setPrizeIntro(String prizeIntro) {
+        this.prizeIntro = prizeIntro == null ? null : prizeIntro.trim();
+    }
+
     public String getStatus() {
         return status;
     }
@@ -143,13 +151,5 @@ public class Studentsprize {
 
     public void setReviewer(String reviewer) {
         this.reviewer = reviewer == null ? null : reviewer.trim();
-    }
-
-    public String getPrizeIntro() {
-        return prizeIntro;
-    }
-
-    public void setPrizeIntro(String prizeIntro) {
-        this.prizeIntro = prizeIntro == null ? null : prizeIntro.trim();
     }
 }

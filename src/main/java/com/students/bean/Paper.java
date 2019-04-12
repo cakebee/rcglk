@@ -9,7 +9,7 @@ public class Paper {
 
     private String author;
 
-    private String magezine;
+    private String periodical;
 
     private String level;
 
@@ -26,6 +26,18 @@ public class Paper {
     private Date submitDate;
 
     private String reason;
+
+    private String accessNumber;
+
+    private Integer authorLevel;
+
+    private Integer paperId;
+
+    private String url;
+
+    private String file;
+
+    private String intro;
 
     public Integer getId() {
         return id;
@@ -51,12 +63,12 @@ public class Paper {
         this.author = author == null ? null : author.trim();
     }
 
-    public String getMagezine() {
-        return magezine;
+    public String getPeriodical() {
+        return periodical;
     }
 
-    public void setMagezine(String magezine) {
-        this.magezine = magezine == null ? null : magezine.trim();
+    public void setPeriodical(String periodical) {
+        this.periodical = periodical == null ? null : periodical.trim();
     }
 
     public String getLevel() {
@@ -121,5 +133,53 @@ public class Paper {
 
     public void setReason(String reason) {
         this.reason = reason == null ? null : reason.trim();
+    }
+
+    public String getAccessNumber() {
+        return accessNumber;
+    }
+
+    public void setAccessNumber(String accessNumber) {
+        this.accessNumber = accessNumber == null ? null : accessNumber.trim();
+    }
+
+    public Integer getAuthorLevel() {
+        return authorLevel;
+    }
+
+    public void setAuthorLevel(Integer authorLevel) {
+        this.authorLevel = authorLevel;
+    }
+
+    public Integer getPaperId() {
+        return paperId;
+    }
+
+    public void setPaperId(Integer paperId) {
+        this.paperId = paperId;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file == null ? null : file.trim();
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro == null ? null : intro.trim();
     }
 }

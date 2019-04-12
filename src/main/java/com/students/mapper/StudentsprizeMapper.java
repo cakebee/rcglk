@@ -16,21 +16,15 @@ public interface StudentsprizeMapper {
 
     int insertSelective(Studentsprize record);
 
-    List<Studentsprize> selectByExampleWithBLOBs(StudentsprizeExample example);
-
     List<Studentsprize> selectByExample(StudentsprizeExample example);
 
     Studentsprize selectByPrimaryKey(Integer prizeId);
 
     int updateByExampleSelective(@Param("record") Studentsprize record, @Param("example") StudentsprizeExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") Studentsprize record, @Param("example") StudentsprizeExample example);
-
     int updateByExample(@Param("record") Studentsprize record, @Param("example") StudentsprizeExample example);
 
     int updateByPrimaryKeySelective(Studentsprize record);
-
-    int updateByPrimaryKeyWithBLOBs(Studentsprize record);
 
     int updateByPrimaryKey(Studentsprize record);
 }
