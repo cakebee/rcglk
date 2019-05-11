@@ -17,7 +17,6 @@ public class SerializeService {
   private ResumeMapper resumeMapper;
 
 public boolean addResume(String resume, String stuId) throws IOException {
-	// TODO Auto-generated method stub
 	String path="/data/wwwroot/default/rcglk/resume/resume"+stuId+".txt";
 	File file=new File(path);
 	if(file.exists()) {
@@ -29,7 +28,6 @@ public boolean addResume(String resume, String stuId) throws IOException {
 }
 
 public boolean deleteResume(String stuId) {
-	// TODO Auto-generated method stub
 	String path="/data/wwwroot/default/rcglk/resume/resume"+stuId+".txt";
 	File file=new File(path);
 	boolean bool=false;
@@ -40,7 +38,6 @@ public boolean deleteResume(String stuId) {
 }
 
 public String getResume(String stuId) throws ClassNotFoundException, IOException {
-	// TODO Auto-generated method stub
 	String path="/data/wwwroot/default/rcglk/resume/resume"+stuId+".txt";
 	File file=new File(path);
 	

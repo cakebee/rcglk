@@ -36,24 +36,20 @@ public class ManagerService {
 	}
 
 	public void updateManager(Manager manager) {
-		// TODO Auto-generated method stub
 		managerMapper.updateByPrimaryKey(manager);
 		
 	}
 
 	public void deleteManager(String id) {
-		// TODO Auto-generated method stub
 		managerMapper.deleteByPrimaryKey(id);
 		
 	}
 
 	public List<Manager> getAll() {
-		// TODO Auto-generated method stub
 		return managerMapper.selectByExample(null);
 	}
 
 	public Manager getOne(String managerId) {
-		// TODO Auto-generated method stub
 		return managerMapper.selectByPrimaryKey(managerId);
 	}
 

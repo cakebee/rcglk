@@ -39,7 +39,6 @@ public class StudentsprizeService {
      */
 
     public List<Studentsprize> getPrize(String stuId, String status) {
-        // TODO Auto-generated method stub
         StudentsprizeExample example = new StudentsprizeExample();
         Criteria cri = example.createCriteria();
         cri.andStatusEqualTo(status);
@@ -135,7 +134,6 @@ public class StudentsprizeService {
     }
 
     public boolean deleteprize(int prizeId) {
-        // TODO Auto-generated method stub
 
         Studentsprize studentsprize = studentsprizeMapper.selectByPrimaryKey(prizeId);
         String filePath = Path.prize + studentsprize.getPrizeFile();
@@ -153,7 +151,6 @@ public class StudentsprizeService {
     }
 
     public boolean savaPrize(Studentsprize studentsprize) {
-        // TODO Auto-generated method stub
 
         studentsprize.setStatus("0");
 
@@ -178,7 +175,6 @@ public class StudentsprizeService {
      * @create: 2019/4/9 22:32
      **/
     public boolean addPrize(Studentsprize studentsPrize, MultipartFile file) throws IOException {
-        // TODO Auto-generated method stub
         File savedFile = null;
 
         if (file != null) {
@@ -271,7 +267,6 @@ public class StudentsprizeService {
     }
 
     public void check(String isPassed, Integer prizeId, String reason) {
-        // TODO Auto-generated method stub
         Calendar ca = Calendar.getInstance();
         Date date = ca.getTime();
 
@@ -293,17 +288,14 @@ public class StudentsprizeService {
     }
 
     public Studentsprize getOne(int prizeId) {
-        // TODO Auto-generated method stub
         return studentsprizeMapper.selectByPrimaryKey(prizeId);
     }
 
     public PageInfo<Studentsprize> getByDate(int pageNum, int pageSize, Date submitDate1, Date submitDate2) {
-        // TODO Auto-generated method stub
         return null;
     }
 
     public PageInfo<Studentsprize> getBySumbit(int pageNum, int pageSize, Date submitDate1, Date submitDate2) {
-        // TODO Auto-generated method stub
         return null;
     }
 

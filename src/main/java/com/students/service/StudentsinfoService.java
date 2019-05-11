@@ -27,13 +27,11 @@ public class StudentsinfoService {
 
 
     public void deleteStuInfo(String id) {
-        // TODO Auto-generated method stub
         studentsinfoMapper.deleteByPrimaryKey(id);
 
     }
 
     public List<Studentsinfo> getOne(String stuId) {
-        // TODO Auto-generated method stub
         StudentsinfoExample example = new StudentsinfoExample();
         StudentsinfoExample.Criteria cri = example.createCriteria();
         cri.andStuIdLike(stuId);
@@ -43,7 +41,6 @@ public class StudentsinfoService {
     }
 
     public List<Studentsinfo> getAll() {
-        // TODO Auto-generated method stub
         return studentsinfoMapper.selectByExample(null);
 
     }
@@ -117,7 +114,6 @@ public class StudentsinfoService {
     }
 
     public void updateStudentsinfo(Studentsinfo studentsinfo) {
-        // TODO Auto-generated method stub
         studentsinfoMapper.updateByPrimaryKeySelective(studentsinfo);
         //studentsinfoMapper.updateByPrimaryKey(studentsinfo);
 
@@ -129,7 +125,6 @@ public class StudentsinfoService {
      * @param stuId
      */
     public boolean addStudentsinfo(String stuId) {
-        // TODO Auto-generated method stub
         //先查询该学生是否被创建
         StudentspassExample example = new StudentspassExample();
         com.students.bean.StudentspassExample.Criteria criteria = example.createCriteria();
@@ -166,7 +161,6 @@ public class StudentsinfoService {
     }
 
     public boolean insert(Studentsinfo studentsinfo) {
-        // TODO Auto-generated method stub
         int i = studentsinfoMapper.insertSelective(studentsinfo);
         if (i == 0) {
             return false;

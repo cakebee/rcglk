@@ -7,6 +7,11 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="D:/Documents/JavaDoc/rcglk" />
+    <option name="OTHER_OPTIONS" value=" -encoding UTF-8 -charset UTF-8 -windowtitle &quot;文档HTML页面标签的标题&quot; -link http://docs.Oracle.com/javase/7/docs/api" />
+    <option name="LOCALE" value="zh_CN" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>

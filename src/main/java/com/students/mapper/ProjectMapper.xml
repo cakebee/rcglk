@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.students.mapper.ProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.students.bean.Project" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="DATE" />
+    <result column="end_date" property="endDate" jdbcType="DATE" />
+    <result column="intro" property="intro" jdbcType="VARCHAR" />
+    <result column="env" property="env" jdbcType="VARCHAR" />
+    <result column="frame" property="frame" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="VARCHAR" />
+    <result column="role_detl" property="roleDetl" jdbcType="VARCHAR" />
+    <result column="duty" property="duty" jdbcType="VARCHAR" />
+    <result column="stu_id" property="stuId" jdbcType="CHAR" />
+    <result column="stu_name" property="stuName" jdbcType="VARCHAR" />
+    <result column="supp" property="supp" jdbcType="VARCHAR" />
+    <result column="proj_link" property="projLink" jdbcType="VARCHAR" />
+    <result column="src_link" property="srcLink" jdbcType="VARCHAR" />
+    <result column="prize_id" property="prizeId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="submit_date" property="submitDate" jdbcType="DATE" />
+    <result column="review_date" property="reviewDate" jdbcType="DATE" />
+    <result column="reviewer" property="reviewer" jdbcType="VARCHAR" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="file" property="file" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, start_date, end_date, intro, env, frame, role, role_detl, duty, stu_id, 
+    stu_name, supp, proj_link, src_link, prize_id, status, submit_date, review_date, 
+    reviewer, reason, file
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.students.bean.ProjectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from project
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from project
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.students.bean.ProjectExample" >
+    delete from project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.students.bean.Project" >
+    insert into project (id, name, start_date, 
+      end_date, intro, env, frame, 
+      role, role_detl, duty, 
+      stu_id, stu_name, supp, 
+      proj_link, src_link, prize_id, 
+      status, submit_date, review_date, 
+      reviewer, reason, file
+      )
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{startDate,jdbcType=DATE}, 
+      #{endDate,jdbcType=DATE}, #{intro,jdbcType=VARCHAR}, #{env,jdbcType=VARCHAR}, #{frame,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR}, #{roleDetl,jdbcType=VARCHAR}, #{duty,jdbcType=VARCHAR}, 
+      #{stuId,jdbcType=CHAR}, #{stuName,jdbcType=VARCHAR}, #{supp,jdbcType=VARCHAR}, 
+      #{projLink,jdbcType=VARCHAR}, #{srcLink,jdbcType=VARCHAR}, #{prizeId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{submitDate,jdbcType=DATE}, #{reviewDate,jdbcType=DATE}, 
+      #{reviewer,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR}, #{file,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.students.bean.Project" >
+    insert into project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="intro != null" >
+        intro,
+      </if>
+      <if test="env != null" >
+        env,
+      </if>
+      <if test="frame != null" >
+        frame,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="roleDetl != null" >
+        role_detl,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="stuId != null" >
+        stu_id,
+      </if>
+      <if test="stuName != null" >
+        stu_name,
+      </if>
+      <if test="supp != null" >
+        supp,
+      </if>
+      <if test="projLink != null" >
+        proj_link,
+      </if>
+      <if test="srcLink != null" >
+        src_link,
+      </if>
+      <if test="prizeId != null" >
+        prize_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="submitDate != null" >
+        submit_date,
+      </if>
+      <if test="reviewDate != null" >
+        review_date,
+      </if>
+      <if test="reviewer != null" >
+        reviewer,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="file != null" >
+        file,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="intro != null" >
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null" >
+        #{env,jdbcType=VARCHAR},
+      </if>
+      <if test="frame != null" >
+        #{frame,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDetl != null" >
+        #{roleDetl,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="stuId != null" >
+        #{stuId,jdbcType=CHAR},
+      </if>
+      <if test="stuName != null" >
+        #{stuName,jdbcType=VARCHAR},
+      </if>
+      <if test="supp != null" >
+        #{supp,jdbcType=VARCHAR},
+      </if>
+      <if test="projLink != null" >
+        #{projLink,jdbcType=VARCHAR},
+      </if>
+      <if test="srcLink != null" >
+        #{srcLink,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeId != null" >
+        #{prizeId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="submitDate != null" >
+        #{submitDate,jdbcType=DATE},
+      </if>
+      <if test="reviewDate != null" >
+        #{reviewDate,jdbcType=DATE},
+      </if>
+      <if test="reviewer != null" >
+        #{reviewer,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="file != null" >
+        #{file,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.students.bean.ProjectExample" resultType="java.lang.Integer" >
+    select count(*) from project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update project
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startDate != null" >
+        start_date = #{record.startDate,jdbcType=DATE},
+      </if>
+      <if test="record.endDate != null" >
+        end_date = #{record.endDate,jdbcType=DATE},
+      </if>
+      <if test="record.intro != null" >
+        intro = #{record.intro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null" >
+        env = #{record.env,jdbcType=VARCHAR},
+      </if>
+      <if test="record.frame != null" >
+        frame = #{record.frame,jdbcType=VARCHAR},
+      </if>
+      <if test="record.role != null" >
+        role = #{record.role,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleDetl != null" >
+        role_detl = #{record.roleDetl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.duty != null" >
+        duty = #{record.duty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stuId != null" >
+        stu_id = #{record.stuId,jdbcType=CHAR},
+      </if>
+      <if test="record.stuName != null" >
+        stu_name = #{record.stuName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supp != null" >
+        supp = #{record.supp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projLink != null" >
+        proj_link = #{record.projLink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srcLink != null" >
+        src_link = #{record.srcLink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prizeId != null" >
+        prize_id = #{record.prizeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.submitDate != null" >
+        submit_date = #{record.submitDate,jdbcType=DATE},
+      </if>
+      <if test="record.reviewDate != null" >
+        review_date = #{record.reviewDate,jdbcType=DATE},
+      </if>
+      <if test="record.reviewer != null" >
+        reviewer = #{record.reviewer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reason != null" >
+        reason = #{record.reason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file != null" >
+        file = #{record.file,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update project
+    set id = #{record.id,jdbcType=CHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      start_date = #{record.startDate,jdbcType=DATE},
+      end_date = #{record.endDate,jdbcType=DATE},
+      intro = #{record.intro,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=VARCHAR},
+      frame = #{record.frame,jdbcType=VARCHAR},
+      role = #{record.role,jdbcType=VARCHAR},
+      role_detl = #{record.roleDetl,jdbcType=VARCHAR},
+      duty = #{record.duty,jdbcType=VARCHAR},
+      stu_id = #{record.stuId,jdbcType=CHAR},
+      stu_name = #{record.stuName,jdbcType=VARCHAR},
+      supp = #{record.supp,jdbcType=VARCHAR},
+      proj_link = #{record.projLink,jdbcType=VARCHAR},
+      src_link = #{record.srcLink,jdbcType=VARCHAR},
+      prize_id = #{record.prizeId,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      submit_date = #{record.submitDate,jdbcType=DATE},
+      review_date = #{record.reviewDate,jdbcType=DATE},
+      reviewer = #{record.reviewer,jdbcType=VARCHAR},
+      reason = #{record.reason,jdbcType=VARCHAR},
+      file = #{record.file,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.students.bean.Project" >
+    update project
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="intro != null" >
+        intro = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null" >
+        env = #{env,jdbcType=VARCHAR},
+      </if>
+      <if test="frame != null" >
+        frame = #{frame,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDetl != null" >
+        role_detl = #{roleDetl,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="stuId != null" >
+        stu_id = #{stuId,jdbcType=CHAR},
+      </if>
+      <if test="stuName != null" >
+        stu_name = #{stuName,jdbcType=VARCHAR},
+      </if>
+      <if test="supp != null" >
+        supp = #{supp,jdbcType=VARCHAR},
+      </if>
+      <if test="projLink != null" >
+        proj_link = #{projLink,jdbcType=VARCHAR},
+      </if>
+      <if test="srcLink != null" >
+        src_link = #{srcLink,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeId != null" >
+        prize_id = #{prizeId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="submitDate != null" >
+        submit_date = #{submitDate,jdbcType=DATE},
+      </if>
+      <if test="reviewDate != null" >
+        review_date = #{reviewDate,jdbcType=DATE},
+      </if>
+      <if test="reviewer != null" >
+        reviewer = #{reviewer,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="file != null" >
+        file = #{file,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.students.bean.Project" >
+    update project
+    set name = #{name,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      intro = #{intro,jdbcType=VARCHAR},
+      env = #{env,jdbcType=VARCHAR},
+      frame = #{frame,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR},
+      role_detl = #{roleDetl,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR},
+      stu_id = #{stuId,jdbcType=CHAR},
+      stu_name = #{stuName,jdbcType=VARCHAR},
+      supp = #{supp,jdbcType=VARCHAR},
+      proj_link = #{projLink,jdbcType=VARCHAR},
+      src_link = #{srcLink,jdbcType=VARCHAR},
+      prize_id = #{prizeId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      submit_date = #{submitDate,jdbcType=DATE},
+      review_date = #{reviewDate,jdbcType=DATE},
+      reviewer = #{reviewer,jdbcType=VARCHAR},
+      reason = #{reason,jdbcType=VARCHAR},
+      file = #{file,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,9 +1,14 @@
 package com.students.utils;
 
+import javax.validation.Validation;
+import javax.validation.ValidatorFactory;
+import javax.validation.Validator;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.TimeZone;
 
 public class Data {
@@ -14,6 +19,20 @@ public class Data {
     //审核未通过
     public static Integer reviewNotPass = 2;
 
+    public static Set<Integer> status = new HashSet<Integer>(){
+        {
+            add(unReviewed);
+            add(reviewPass);
+            add(reviewNotPass);
+        }
+    };
+
+    private static ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+
+    public static Validator validator = validatorFactory.getValidator();
+
+    public static boolean isStatusValid(Integer s) { return status.contains(s); }
+
     public static boolean isValid(String s){
         return s != null && !s.equals("");
     }
@@ -22,7 +41,7 @@ public class Data {
         return (date != null);
     }
 
-    public static boolean isValid(Integer i){return i != null;}
+    public static boolean isValid(Integer i){ return i != null; }
 
     public static Date stringToShortDate(String date){
         System.out.println(date);

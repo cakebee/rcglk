@@ -36,7 +36,6 @@ public class StudentsorgService {
      * @create: 2019/4/9 10:43
      **/
     public boolean addOrg(Studentsorg studentsorg, MultipartFile file) throws IOException {
-        // TODO Auto-generated method stub
         File savedFile;
         /*存储证明文件*/
         if(file != null){
@@ -127,7 +126,6 @@ public class StudentsorgService {
     }
 
     public boolean deleteOrg(String stuId) {
-        // TODO Auto-generated method stub
 
         StudentsorgExample example = new StudentsorgExample();
         StudentsorgExample.Criteria cri = example.createCriteria();
@@ -156,7 +154,6 @@ public class StudentsorgService {
     }
 
     public List<Studentsorg> getOrg(String stuId) {
-        // TODO Auto-generated method stub
         StudentsorgExample example = new StudentsorgExample();
         StudentsorgExample.Criteria cri = example.createCriteria();
         cri.andStuIdEqualTo(stuId);
@@ -170,9 +167,6 @@ public class StudentsorgService {
     }
 
     public boolean saveOrg(Studentsorg studentsorg) {
-        // TODO Auto-generated method stub
-
-
         int i = studentsorgMapper.updateByPrimaryKey(studentsorg);
         if (i > 0) {
             return true;
@@ -182,7 +176,6 @@ public class StudentsorgService {
     }
 
     public List<Studentsorg> getAll() {
-        // TODO Auto-generated method stub
         StudentsorgExample example = new StudentsorgExample();
         StudentsorgExample.Criteria cri = example.createCriteria();
         return studentsorgMapper.selectByExample(example);
@@ -260,7 +253,6 @@ public class StudentsorgService {
     }
 
     public Studentsorg getOne(int orgId) {
-        // TODO Auto-generated method stub
         return studentsorgMapper.selectByPrimaryKey(orgId);
     }
 

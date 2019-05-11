@@ -322,7 +322,6 @@ public class StudentQualityService {
             }
             br.close();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         System.out.println(ll);
@@ -330,7 +329,6 @@ public class StudentQualityService {
     }
 
     private List<String> getTrainAttrList(){
-        // TODO Auto-generated method stub
         List<String> ll = new ArrayList<String>();
         File f = new File(fileDir);
         try {
@@ -344,7 +342,6 @@ public class StudentQualityService {
             }
             br.close();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         System.out.println(ll);

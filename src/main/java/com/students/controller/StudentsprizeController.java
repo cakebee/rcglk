@@ -57,39 +57,6 @@ public class StudentsprizeController {
     @Autowired
     private StudentsprizeService studentsprizeService;
 
-//	
-//	@ResponseBody
-//	@RequestMapping(value="/Studentsprize",method=RequestMethod.POST)
-//	public Msg addPrize(@RequestBody Studentsprize studentsPrize,MultipartFile file){
-//		System.out.println(studentsPrize);
-//
-//		if(file!=null){
-//		String originalName=file.getOriginalFilename();
-//		String fileName=UUID.randomUUID()+ originalName.substring(originalName.lastIndexOf("."));
-//		String savePath="D:\\file\\"+fileName;
-//		File filePath=new File(savePath);
-//		
-//		
-//		
-//		
-//		try {
-//			file.transferTo(filePath);
-//			
-//			studentsPrize.setPrizeFile(savePath);
-//		} catch (IllegalStateException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		}
-//		studentsprizeService.addPrize(studentsPrize);
-//		
-//		return Msg.success();
-//	}
-
     /**
      * @description 
      * @param studentsPrizeString
@@ -131,13 +98,7 @@ public class StudentsprizeController {
             try {
                 file.transferTo(filePath);
                 studentsprizeService.setFile(savePath, prizeId);
-
-
-            } catch (IllegalStateException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
+            }catch (IOException e) {
                 e.printStackTrace();
             }
 

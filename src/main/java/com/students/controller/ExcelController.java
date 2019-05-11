@@ -39,11 +39,7 @@ public class ExcelController {
 		try {
 			file.transferTo(savePath);
 			
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		}catch (IOException e) {
 			e.printStackTrace();
 		}
 		if(read.equals("readGrade")) {
